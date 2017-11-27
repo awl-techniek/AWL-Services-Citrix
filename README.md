@@ -2,7 +2,7 @@
 Back-end service for Citrix Storefront customization
 
 
-## How-to Testthe Service
+## How-to Test the Service
 1. Build the AWL.Services.Console project
 2. Go to the Build folder
 3. Run-as Administrator the AWL.Services.Console.exe
