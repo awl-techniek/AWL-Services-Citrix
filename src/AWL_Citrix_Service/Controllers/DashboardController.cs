@@ -41,7 +41,11 @@ namespace AWL.Citrix.Service.Controllers
 
                 var desktopMachineIds = machines.Where(m => m.DesktopGroupId == odg.Id).Select(m => m.Id);
                 var machineSessions = openSessions.Where(s => desktopMachineIds.Contains(s.MachineId.Value));
-
+                var machinesInMaintenance = machines
+                        .Where(m => desktopMachineIds.Contains(m.Id))
+                        .Where(m => m.IsInMaintenanceMode == true);
+                
+                
                 var desktop = new Desktop()
                 {
                     ID = cdg.Uid,
@@ -73,7 +77,7 @@ namespace AWL.Citrix.Service.Controllers
                 {
                     //desktop.MachinesCapacity = desktopMachineIds.Count();
                     //desktop.MachinesInUse = machineSessions.Count();
-                    desktop.MachinesAvailable = desktopMachineIds.Count() - machineSessions.Count();
+                    desktop.MachinesAvailable = desktopMachineIds.Count() - machineSessions.Count() - machinesInMaintenance.Count();
                 }
 
                 desktops.Add(desktop);
