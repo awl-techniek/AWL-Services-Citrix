@@ -33,7 +33,7 @@ namespace AWL.Citrix.Service
                 context.ErrorResult = new AuthenticationFailureResult("Missing credentials", request);
                 return;
             }
-
+            StoreFrontBaseAddres = "http://" + context.Request.Headers.GetValues("X-ServerIdentifier").FirstOrDefault();
             var auth = AuthenticateUser(cookies);
             if (auth == null)
             {
