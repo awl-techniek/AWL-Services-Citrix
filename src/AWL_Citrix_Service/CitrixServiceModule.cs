@@ -29,7 +29,7 @@ namespace AWL.Citrix.Service
         protected override void Load(ContainerBuilder builder)
         {
             StoreFrontAuthenticate.StoreName = StoreName;
-            StoreFrontAuthenticate.StoreFrontBaseAddres = StoreFrontBaseAddress;
+            
             //NotificationTicker.NoticationTickerInterval = NoticationTickerInterval; - NOT AVAILABLE FOR EXTERNAL USE
 
             builder.Register(db => new DatabaseContext(new Uri(XenDesktopMonitorEndpoint))
